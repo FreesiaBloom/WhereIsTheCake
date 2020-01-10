@@ -98,7 +98,11 @@ public class Player : MonoBehaviour
                     }
                     else
                     {
-                        hit.transform.gameObject.BroadcastMessage("Use", null, SendMessageOptions.DontRequireReceiver);
+						if (!hit.transform.gameObject.GetComponent<Button_Big>())
+						{
+							hit.transform.gameObject.BroadcastMessage("Use", null, SendMessageOptions.DontRequireReceiver);
+						}
+                        
                     }
                 }
             }

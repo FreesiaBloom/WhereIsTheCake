@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     {
         MouseMovement();
         KeyboardMovement();
-        //Use();
+        Use();
     }
 
     public void MouseMovement()
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
     {
         movement = JumpDirection;
     }
-	/*
+	
     public void Use()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -112,5 +112,5 @@ public class Player : MonoBehaviour
                 grabbedObject = null;
             }
         }
-    }*/
+    }
 }

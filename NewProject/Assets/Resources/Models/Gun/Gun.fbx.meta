@@ -2,7 +2,13 @@ fileFormatVersion: 2
 guid: d5e1394d2e197f64fa522121349c82a7
 ModelImporter:
   serializedVersion: 26
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 1989289236423521904
+    second: Default Take
+  - first:
+      74: -2705664786432609619
+    second: gun_shot
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -87,7 +93,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

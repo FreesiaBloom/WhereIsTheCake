@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Turret_shoot
+  m_Name: turret_shoot
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,18 +20,18 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0.003, y: -0.00032143772, z: -0.002}
-        inSlope: {x: 2.7755576e-17, y: -3.469447e-18, z: 0.023999998}
-        outSlope: {x: 2.7755576e-17, y: -3.469447e-18, z: 0.023999998}
+        value: {x: 0.006, y: 0, z: -0.004}
+        inSlope: {x: 5.551115e-17, y: -0, z: 0.047999997}
+        outSlope: {x: 5.551115e-17, y: -0, z: 0.047999997}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.083333336
-        value: {x: 0.003, y: -0.00032143772, z: 0}
-        inSlope: {x: 1.1895247e-17, y: -1.4869059e-18, z: 0.023999998}
-        outSlope: {x: 1.1895247e-17, y: -1.4869059e-18, z: 0.023999998}
+        value: {x: 0.006, y: 0, z: 0}
+        inSlope: {x: 2.3790494e-17, y: -0, z: 0.047999997}
+        outSlope: {x: 2.3790494e-17, y: -0, z: 0.047999997}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -45,18 +45,18 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: -0.003, y: 0, z: -0.002}
-        inSlope: {x: -2.7755576e-17, y: -0, z: 0.023999998}
-        outSlope: {x: -2.7755576e-17, y: -0, z: 0.023999998}
+        value: {x: -0.006, y: 0, z: -0.004}
+        inSlope: {x: -5.551115e-17, y: -0, z: 0.047999997}
+        outSlope: {x: -5.551115e-17, y: -0, z: 0.047999997}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.083333336
-        value: {x: -0.003, y: 0, z: 0}
-        inSlope: {x: -1.1895247e-17, y: -0, z: 0.023999998}
-        outSlope: {x: -1.1895247e-17, y: -0, z: 0.023999998}
+        value: {x: -0.006, y: 0, z: 0}
+        inSlope: {x: -2.3790494e-17, y: -0, z: 0.047999997}
+        outSlope: {x: -2.3790494e-17, y: -0, z: 0.047999997}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}

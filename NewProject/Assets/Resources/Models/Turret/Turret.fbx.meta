@@ -4,14 +4,14 @@ ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
-      74: 5269400401581482830
-    second: Turret_arm
+      74: 2323497676011092582
+    second: turret_arm
   - first:
-      74: 3086956748723242098
-    second: Turret_disarm
+      74: 5235303692411823526
+    second: turret_disarm
   - first:
-      74: 4097053569534433808
-    second: Turret_shoot
+      74: -9042922879334389502
+    second: turret_shoot
   externalObjects: {}
   materials:
     importMaterials: 1

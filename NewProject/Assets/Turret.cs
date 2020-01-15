@@ -43,6 +43,7 @@ public class Turret : MonoBehaviour
 			{
 				Quaternion spineRotation = Quaternion.LookRotation(Player.transform.position - Spine.transform.position);
 				Spine.transform.rotation = Quaternion.Slerp(Spine.transform.rotation, spineRotation, 5.0f * Time.deltaTime);
+				Aim();
 			}
 			else
 			{
@@ -95,5 +96,41 @@ public class Turret : MonoBehaviour
 		{
 			armed = false;
 		}
+	}
+	
+	void Aim()
+	{
+		RaycastHit hit;
+		Debug.DrawRay(Laser.transform.position, Laser.transform.forward * 1000, Color.red);
+		if (Physics.Raycast(Laser.transform.position, Laser.transform.forward, out hit, Mathf.Infinity))
+		{
+			if (hit.transform.name == "Player")
+			{
+				anim.SetBool("shoot", true);
+			}
+			else
+			{
+				anim.SetBool("shoot", false);
+			}
+		}
+	}
+	
+	public void Shoot()
+	{
+		RaycastHit hit;
+		Debug.DrawRay(Laser.transform.position, Laser.transform.forward * 1000, Color.yellow);
+		if (Physics.Raycast(Laser.transform.position, Laser.transform.forward, out hit, Mathf.Infinity))
+		{
+			if (hit.transform.name == "Player")
+			{
+				hit.transform.gameObject.BroadcastMessage("TakeDamage", turret_damage, SendMessageOptions.DontRequireReceiver);
+			}
+		}
+		AudioSource shoot_aSource = this.gameObject.AddComponent<AudioSource>();
+		AudioClip current_clip = turret_shoot_list[Random.Range(0, turret_shoot_list.Count)];
+		shoot_aSource.clip = current_clip;
+		shoot_aSource.spatialBlend = 1;
+		shoot_aSource.Play();
+		Destroy(shoot_aSource, current_clip.length);
 	}
 }

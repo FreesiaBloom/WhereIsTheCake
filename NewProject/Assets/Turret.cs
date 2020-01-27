@@ -133,4 +133,24 @@ public class Turret : MonoBehaviour
 		shoot_aSource.Play();
 		Destroy(shoot_aSource, current_clip.length);
 	}
+	
+	public void Kill() 
+	{
+		Debug.Log("Killed!");
+		Laser.GetComponent<LineRenderer>().enabled = false;
+		isAlive = false;
+		anim.Play("turret_disarm");
+		anim.SetBool("armed", false);
+		anim.SetBool("shoot", false);
+		armed = false;
+		Speak(shutting_down);
+	}
+	
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (collision.relativeVelocity.magnitude > 5 && isAlive) 
+		{
+			Kill();
+		}
+	}
 }

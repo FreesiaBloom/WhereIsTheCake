@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
 	public float step_size=1.2f;
 	public List<AudioClip> setpAudioClipList = new List<AudioClip>();
 	public List<AudioClip> jumpAudioClipList = new List<AudioClip>();
+	
+	public AudioSource jump_aSource;
+	float oldHeight = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +54,7 @@ public class Player : MonoBehaviour
 			MouseMovement();
 			KeyboardMovement();
 			Use();
+			PlayJumpMusic();
 		}
     }
 
@@ -91,6 +95,7 @@ public class Player : MonoBehaviour
             movement.x = Input.GetAxis("Vertical") * speed * transform.forward.x + Input.GetAxis("Horizontal") * speed * transform.forward.z;
 			
 			Steps();
+			oldHeight = transform.position.y;
         }
 
         ctrl.Move(movement * Time.deltaTime);
@@ -179,6 +184,13 @@ public class Player : MonoBehaviour
 		{
 			PlaySound(setpAudioClipList);
 			old_position = transform.position;
+			PlayerCamera.GetComponent<Animator>().Play("camera_walk", 0, 0);
 		}
+	}
+	
+	public void PlayJumpMusic()
+	{
+		float height = transform.position.y - oldHeight;
+		jump_aSource.volume = height * height / 50.0f;
 	}
 }

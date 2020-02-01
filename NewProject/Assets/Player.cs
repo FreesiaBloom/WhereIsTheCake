@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 
@@ -20,19 +21,37 @@ public class Player : MonoBehaviour
     public bool grabbingSomething = false;
     public GameObject hand;
     public GameObject grabbedObject;
+	
+	public Image Fader;
+	public float health = 100.0f;
+	public bool isAlive = true;
+	public Camera PlayerCamera;
+	Rigidbody body;
+	
+	AudioSource aSource;
+	Vector3 old_position;
+	public float step_size=1.2f;
+	public List<AudioClip> setpAudioClipList = new List<AudioClip>();
+	public List<AudioClip> jumpAudioClipList = new List<AudioClip>();
 
     // Start is called before the first frame update
     void Start()
     {
         ctrl = GetComponent<CharacterController>();
+		body = GetComponent<Rigidbody>();
+		aSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
+	
     void Update()
     {
-        MouseMovement();
-        KeyboardMovement();
-        Use();
+		if (isAlive) 
+		{
+			MouseMovement();
+			KeyboardMovement();
+			Use();
+		}
     }
 
     public void MouseMovement()
@@ -70,6 +89,8 @@ public class Player : MonoBehaviour
         {
             movement.z = Input.GetAxis("Vertical") * speed * transform.forward.z - Input.GetAxis("Horizontal") * speed * transform.forward.x;
             movement.x = Input.GetAxis("Vertical") * speed * transform.forward.x + Input.GetAxis("Horizontal") * speed * transform.forward.z;
+			
+			Steps();
         }
 
         ctrl.Move(movement * Time.deltaTime);
@@ -117,4 +138,47 @@ public class Player : MonoBehaviour
             }
         }
     }
+	
+	public void Kill() 
+	{
+		isAlive = false;
+		body.isKinematic = false;
+		body.drag = 3;
+		body.angularDrag = 3;
+		body.useGravity = true;
+		GetComponent<SphereCollider>().isTrigger = false;
+		Debug.Log("You lose!");
+		this.GetComponentInChildren<Gun>().enabled = false;
+		Fader.GetComponent<Animator>().Play("fader_black");
+	}
+	
+	public void TakeDamage(float damage) 
+	{
+		if (isAlive)
+		{
+			health -= damage;
+			Debug.Log("Health: " + health);
+			if (health <= 0)
+			{
+				Kill();
+			}
+			PlayerCamera.GetComponent<Animator>().Play("camera_hit");
+			Fader.GetComponent<Animator>().Play("fader_red");
+		}
+	}
+	
+	public void PlaySound(List<AudioClip> lista) 
+	{
+		aSource.clip = lista[UnityEngine.Random.Range(0, lista.Count)];
+		aSource.Play();
+	}
+	
+	public void Steps()
+	{
+		if (Vector3.Distance(transform.position, old_position) > step_size)
+		{
+			PlaySound(setpAudioClipList);
+			old_position = transform.position;
+		}
+	}
 }

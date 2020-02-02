@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
 		body.drag = 3;
 		body.angularDrag = 3;
 		body.useGravity = true;
-		GetComponent<SphereCollider>().isTrigger = false;
+		GetComponent<CapsuleCollider>().isTrigger = false;
 		Debug.Log("You lose!");
 		this.GetComponentInChildren<Gun>().enabled = false;
 		Fader.GetComponent<Animator>().Play("fader_black");

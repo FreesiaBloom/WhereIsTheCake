@@ -41,7 +41,7 @@ public class Grippable : MonoBehaviour
     public void Use(GameObject _Hand = null)
     {
         Hand = _Hand;
-        if (isGrabbed)
+        if (!isGrabbed)
         {
             body.drag = 15.0f;
             body.angularDrag = 15.0f;
